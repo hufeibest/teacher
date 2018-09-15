@@ -11,6 +11,6 @@ const getters = {
   authority: state => state.user.authority,
   student: state => state.student.student,
   group: state => state.student.group,
-  issue: state => state.issue.issues
+  issue: state => state.issue.issue
 }
 export default getters

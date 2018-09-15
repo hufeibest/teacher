@@ -251,10 +251,14 @@
       handleDelete(index, row) {
         this.cloneStudent = row
         this.delStudent()
+        this.$store.dispatch('setStudent', this.student)
+        this.getTableData()
       },
       editStudent() {
         this.delStudent()
         this.student[this.edit.class].push(this.edit)
+        this.$store.dispatch('setStudent', this.student)
+        this.getTableData()
         this.showEdit = false
       },
       delStudent() {
@@ -263,8 +267,6 @@
             this.student[this.cloneStudent.class].splice(index, 1)
           }
         })
-        this.$store.dispatch('setStudent', this.student)
-        this.getTableData()
       },
       getTableData() {
         let arr = []

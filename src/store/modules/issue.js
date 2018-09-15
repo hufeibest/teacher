@@ -7,8 +7,8 @@ const issue = {
   },
   mutations: {
     SetIssue: (state, data) => {
-      state.issue.push(data)
-      Cookies.set('issue', state.issue)
+      state.issue = data
+      Cookies.set('issue', JSON.stringify(state.issue))
     }
   },
   actions: {

@@ -59,7 +59,6 @@ export function getStudent() {
   if (word === '""' || !word) {
     return {}
   } else {
-    console.log(word)
     return JSON.parse(word)
   }
 }
@@ -76,7 +75,7 @@ export function getGroup() {
 export function getIssue() {
   const word = Cookies.get(issue)
   if (word === '""' || !word) {
-    return {}
+    return []
   } else {
     return JSON.parse(word)
   }
