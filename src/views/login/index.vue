@@ -7,7 +7,7 @@
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
         </span>
-        <el-input name="username" type="text" v-model="loginForm.username"  placeholder="手机号" />
+        <el-input name="username" type="text" v-model="loginForm.username"  placeholder="名称" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
@@ -54,7 +54,20 @@ export default {
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
       loading: false,
-      pwdType: 'password'
+      pwdType: 'password',
+      response: {
+        token: 'ahsdihaishdahsdoihioqhwodoasdoajosdjoa',
+        name: '杜冰卿',
+        mgr_type: '1'
+      }
+    }
+  },
+  computed: {
+    username: function() {
+      return this.$store.getters.username
+    },
+    password: function() {
+      return this.$store.getters.password
     }
   },
   methods: {
@@ -69,18 +82,22 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('Login', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({ path: '/dashboard' })
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!')
-          return false
+          if (this.username === this.loginForm.username && this.password === this.loginForm.password) {
+            this.$store.dispatch('Login', this.response).then(() => {
+              this.loading = false
+              this.$router.push({ path: './dashboard' })
+            }).catch(() => {
+              this.loading = false
+            })
+          } else {
+            console.log('error submit!!')
+            return false
+          }
         }
       })
     }
+  },
+  mounted() {
   }
 }
 </script>

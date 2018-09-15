@@ -7,6 +7,7 @@ import { getToken, getVersion } from '@/utils/auth' // 验权
 import { version } from '@/utils/static'
 
 import test from '@/router/test'
+import student from '@/router/student'
 
 const whiteList = ['/login'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
@@ -20,7 +21,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      store.dispatch('setRouter', test).then(() => {
+      store.dispatch('setRouter', [...test, ...student]).then(() => {
         next()
       })
     }

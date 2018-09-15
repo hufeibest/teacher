@@ -15,22 +15,6 @@ export default {
   mounted() {
   },
   methods: {
-    cached(fn) {
-      const cache = Object.create(null)
-      return (function cached(str) {
-        console.log(str)
-        const hit = cache[str]
-        return hit || (cache[str] = fn(str))
-      })
-    }
-  },
-  created() {
-    const idToTemplate = this.cached(id => {
-      const el = 1254
-      return el && 456
-    })
-    let id = idToTemplate(4678)
-    console.log(id)
   }
 }
 </script>

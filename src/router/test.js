@@ -2,20 +2,20 @@
  * Created by mcqueen on 2017-11-09.
  */
 import Layout from '../views/layout/Layout'
-const dashboard = [{
-  path: '/test',
+const issue = [{
+  path: '/issueList',
   component: Layout,
   name: 'Dashboard',
-  meta: { title: '测试', icon: 'list' },
+  meta: { title: '问题列表', icon: 'list' },
   children: [{
-    path: 'test',
-    meta: { title: '测试', icon: 'list' },
-    component: () => import('@/views/test/index')
+    path: 'issue',
+    meta: { title: '设置问题', icon: 'list' },
+    component: () => import('@/views/issue/index')
   }, {
-    path: 'test2',
-    meta: { title: '测试2', icon: 'list' },
+    path: 'list',
+    meta: { title: '问题列表', icon: 'list' },
     component: () => import('@/views/test/index')
   }]
 }]
 
-export default dashboard
+export default issue

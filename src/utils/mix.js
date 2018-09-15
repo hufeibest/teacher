@@ -1,0 +1,5 @@
+const myMixin = {
+  methods: {
+    save
+  }
+}
